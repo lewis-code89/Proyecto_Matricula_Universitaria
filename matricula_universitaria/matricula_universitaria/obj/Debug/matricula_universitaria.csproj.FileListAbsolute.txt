@@ -1,0 +1,8 @@
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\obj\Debug\matricula_universitaria.csproj.AssemblyReference.cache
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\obj\Debug\matricula_universitaria.csproj.CoreCompileInputs.cache
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\bin\Debug\matricula_universitaria.exe.config
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\bin\Debug\matricula_universitaria.exe
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\bin\Debug\matricula_universitaria.pdb
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\obj\Debug\matricula_universitaria.exe
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\obj\Debug\matricula_universitaria.pdb
+C:\Users\DOCENTE\source\repos\matricula_universitaria\matricula_universitaria\obj\Debug\matricula_universitaria.exe.config
