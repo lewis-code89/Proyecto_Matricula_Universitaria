@@ -1,0 +1,115 @@
+ALGORITMO Sistema_Matricula_Universitaria
+
+INICIO
+    // Declaración de Variables
+    DEFINIR codigo, nombre, carrera COMO Cadena
+    DEFINIR ciclo, promedio, cantidad_cursos, i, creditos, total_creditos COMO Entero
+    DEFINIR subtotal, descuento, total_pagar COMO Real
+    DEFINIR tipo_matricula COMO Cadena
+
+    // Entrada y validación de datos personales
+    ESCRIBIR "--- REGISTRO DE DATOS DEL ESTUDIANTE ---"
+    ESCRIBIR "Ingresar código del estudiante:"
+    LEER codigo
+    ESCRIBIR "Ingresar nombre del estudiante:"
+    LEER nombre
+    ESCRIBIR "Ingresar carrera del estudiante:"
+    LEER carrera
+
+    // Validación del ciclo (1 a 10)
+    REPETIR
+        ESCRIBIR "Ingresar ciclo (1 - 10):"
+        LEER ciclo
+        SI ciclo < 1 O ciclo > 10 ENTONCES
+            ESCRIBIR "Error: El ciclo debe estar entre 1 y 10."
+        FINSI
+    HASTA QUE ciclo >= 1 Y ciclo <= 10
+
+    // Validación del promedio (0 a 20)
+    REPETIR
+        ESCRIBIR "Ingresar promedio ponderado (0 - 20):"
+        LEER promedio
+        SI promedio < 0 O promedio > 20 ENTONCES
+            ESCRIBIR "Error: El promedio debe estar entre 0 y 20."
+        FINSI
+    HASTA QUE promedio >= 0 Y promedio <= 20
+// Entrada de cantidad de cursos (1 a 7)
+    ESCRIBIR "----------------------------------------"
+    REPETIR
+        ESCRIBIR "Ingresar cantidad de cursos a matricular (1 - 7):"
+        LEER cantidad_cursos
+        SI cantidad_cursos < 1 O cantidad_cursos > 7 ENTONCES
+            ESCRIBIR "Error: La cantidad de cursos debe ser entre 1 y 7."
+        FINSI
+    HASTA QUE cantidad_cursos >= 1 Y cantidad_cursos <= 7
+
+    // Inicialización del acumulador de créditos
+    total_creditos <- 0
+
+    // Ciclo para registrar cada curso
+    ESCRIBIR "--- REGISTRO DE ASIGNATURAS ---"
+    PARA i <- 1 HASTA cantidad_cursos CON PASO 1 HACER
+        ESCRIBIR "Ingrese el nombre del curso ", i, ":"
+        LEER nombre_curso // Variable temporal para el bucle
+        
+        // Validación de créditos positivos
+        REPETIR
+            ESCRIBIR "Ingrese los créditos del curso ", i, ":"
+            LEER creditos
+            SI creditos <= 0 ENTONCES
+                ESCRIBIR "Error: Los créditos deben ser mayores a cero."
+            FINSI
+        HASTA QUE creditos > 0
+        
+        // Acumulación de créditos
+        total_creditos <- total_creditos + creditos
+    FINPARA
+// Control de carga académica máxima
+    SI total_creditos > 22 ENTONCES
+        ESCRIBIR "----------------------------------------"
+        ESCRIBIR "ERROR CRÍTICO: No puede matricularse con más de 22 créditos."
+        ESCRIBIR "Créditos intentados: ", total_creditos
+        ESCRIBIR "Proceso de matrícula cancelado."
+        FIN // Termina el programa inmediatamente
+    FINSI
+
+    // Determinación del tipo de matrícula
+    SI total_creditos < 12 ENTONCES
+        tipo_matricula <- "Matrícula de tiempo parcial"
+    SINO
+        tipo_matricula <- "Matrícula regular"
+    FINSI
+// Cálculo del porcentaje de descuento según promedio financiero
+    SI promedio >= 18 ENTONCES
+        porcentaje_descuento <- 0.20 // 20%
+    SINO SI promedio >= 16 ENTONCES
+        porcentaje_descuento <- 0.10 // 10%
+    SINO
+        porcentaje_descuento <- 0.00 // 0%
+    FINSI
+
+    // Supuesto académico: Costo base simulado por crédito (ejemplo: S/. 100)
+    COSTO_CREDITO <- 100 
+    subtotal <- total_creditos * COSTO_CREDITO
+    descuento <- subtotal * porcentaje_descuento
+    total_pagar <- subtotal - descuento
+
+    // Salida de resultados: Reporte Académico y Económico
+    ESCRIBIR "========================================"
+    ESCRIBIR "       REPORTE FINAL DE MATRÍCULA       "
+    ESCRIBIR "========================================"
+    ESCRIBIR "Código: ", codigo
+    ESCRIBIR "Estudiante: ", nombre
+    ESCRIBIR "Carrera: ", carrera
+    ESCRIBIR "Ciclo: ", ciclo
+    ESCRIBIR "Promedio: ", promedio
+    ESCRIBIR "----------------------------------------"
+    ESCRIBIR "Total de Créditos Inscritos: ", total_creditos
+    ESCRIBIR "Condición: ", tipo_matricula
+    ESCRIBIR "----------------------------------------"
+    ESCRIBIR "Subtotal a pagar: S/. ", subtotal
+    ESCRIBIR "Descuento aplicado (", (porcentaje_descuento * 100), "%): S/. ", descuento
+    ESCRIBIR "Total neto a pagar: S/. ", total_pagar
+    ESCRIBIR "========================================"
+
+FIN
